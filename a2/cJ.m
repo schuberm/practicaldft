@@ -1,4 +1,4 @@
-% Forward transform (acting on 3d data sets)
+% Inverse transform (acting on 3d data sets)
 %
 % Usage: out=cI(in)
 %

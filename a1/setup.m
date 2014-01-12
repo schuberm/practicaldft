@@ -1,7 +1,9 @@
 %# Make setup info globally accessible (ugh!)
 global gbl_S; global gbl_R; global gbl_G2;
-S=[10;10;10];
+S=[20;25;30];
 R=diag([6; 6; 6]);
+%# Define atomic locations and nuclear charge
+X=[0 0 0; 1.75 0 0]; Z=1;
 %# Code fragment to create columns of m1, m2, m3 indices and the matrix M
 ms=[0:prod(S)-1]'; %# Count from zero to S1*S2*s3-1 in a column vector
 m1=rem(ms,S(1));
@@ -19,5 +21,7 @@ r=M*inv(diag(S))*R';
 G=(2*pi).*N*inv(R);
 %square magnitude of G
 G2=sum(G.^2,2);
+%# Computation of structure factor
+Sf=sum( exp(-i*G*X'), 2);
 %# Assign computed values to the global variables
 gbl_S=S; gbl_R=R; gbl_G2=G2;

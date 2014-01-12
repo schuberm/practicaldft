@@ -10,7 +10,5 @@
 
 function out=O(in)
   global gbl_R; %# Must declare all globals with such statements to access them
-
-  %# Operator definition (multiplication by volume)
-  out= det(gbl_R)*eye(size(in,1))*in; %# <=== YOUR CODE HERE
+  out= det(gbl_R)*in;
 endfunction
