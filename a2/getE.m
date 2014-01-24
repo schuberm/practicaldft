@@ -8,12 +8,7 @@
 
 function out=getE(in)
   global gbl_Vdual; %# Must declare all globals with such statements to access them
-  indag=in';
-  Uinv=inv(indag*O(in));
-  nn=diagouter((cI(in*Uinv)),cI(in));
-  Vtild=cJdag(O(cJ(gbl_Vdual)));
-  %out= -0.5*sum(diagouter(indag,(L(in*Uinv))'))+Vtild'*nn;
-  %out= real(-0.5*trace(indag*L(in*Uinv))+Vtild'*nn);
-  out= Vtild'*nn;
-  %clear indag,Uinv,nn,Vtild;
+  Y=in*inv(sqrtm(in'*O(in)));
+  n=real(diagouter(cI(Y),cI(Y)));
+  out=real(-0.5*trace(Y'*L(Y))+gbl_Vdual'*n);
 endfunction

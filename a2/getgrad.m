@@ -8,7 +8,8 @@
 
 function out=getgrad(in)
   global gbl_Vdual; %# Must declare all globals with such statements to access them
-  Vtild=cJdag(O(cJ(gbl_Vdual)));
-  out=(H(in)-O(in*inv(in'*O(in)))*(in'*H(in)))*inv(in'*O(in));
-  clear Vtild;
+  U=in'*O(in); 
+  Uinv=inv(U); 
+  %out=(H(in)-O(in*inv(in'*O(in)))*(in'*H(in)))*inv(in'*O(in));
+  out=(H(in)-O(in)*Uinv*(in'*H(in)))*Uinv;
 endfunction

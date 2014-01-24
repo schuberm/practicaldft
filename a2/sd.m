@@ -7,10 +7,10 @@
 
 function out=sd(in,Nit)
   alpha=3E-5;
-  old=in;
+  out=in;
   for iter=1:1:Nit
-    out=old-getgrad(old);
+    out=out-alpha*getgrad(out);
     fprintf('Energy: %20.16f\n',getE(out));
-    old=out;
+    %old=out;
   end
 endfunction
